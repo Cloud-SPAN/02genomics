@@ -306,8 +306,7 @@ using a transfer program, it needs to be installed on your local machine, not yo
 ### Using scp for file transfer
 
 `scp` stands for 'secure copy protocol', and is a widely used UNIX tool for moving files
-between computers. The simplest way to use `scp` is to run it in your local terminal,
-and use it to copy a single file:
+between computers. This is ran in your **local terminal**. You will need to be within your cloudspan folder you created previously whether you are using Git Bash or terminal. 
 
 If you are using a Windows machine, you should be able to use scp as long as you have Git Bash/Git for Windows installed.
 Just make sure you run the commands below in a Git Bash terminal and not the built-in Windows terminal.
