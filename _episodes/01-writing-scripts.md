@@ -184,31 +184,6 @@ It will look like nothing happened, but now if you look at `scripted_bad_reads.t
 
 ### File Permissions
 
-We made a backup copy of our files in a previous episode, but then removed the folder and the backup fastq file in order to practise removing files. We would like to make sure we can't accidentally mess up or remove these backup file, so we're going to change the permissions on the files so
-that we're only allowed to read (i.e. view) them, not write to them (i.e. make new changes).
-
-We need to remake the  backup folder we made earlier, make sure you are in the untrimmed_fastq folder:
-
-~~~
-$pwd
-~~~
-{: .bash}
-
-Check you are in the untrimmed_fastq folder if not move to that directory with the following:
-~~~
-$ cd ~/shell_data/untrimmed_fastq/
-~~~
-{: .bash}
-
-Then remake the backup folder and make a backup copy of the fastq
-~~~
-mkdir backup
-cp SRR098026.fastq backup/SRR098026-backup.fastq
-cp SRR097977.fastq backup/SRR097977-backup.fastq
-cd backup
-~~~
-{: .bash}
-
 View the current permissions on a file using the `-l` (long) flag for the `ls` command:
 
 ~~~
@@ -216,11 +191,6 @@ $ ls -l
 ~~~
 {: .bash}
 
-~~~
--rw-r--r-- 1 csuser csuser 47552 Oct 27 15:17 SRR097977-backup.fastq
--rw-r--r-- 1 csuser csuser 43332 Oct 27 15:17 SRR098026-backup.fastq
-~~~
-{: .output}
 
 The first part of the output for the `-l` flag gives you information about the file's current permissions. There are ten slots in the
 permissions list. The first character in this list is related to file type, not permissions, so we'll ignore it for now. The next three
@@ -232,40 +202,8 @@ that deal with your permissions (as the file owner).
 
 Here the three positions that relate to the file owner are `rw-`. The `r` means that you have permission to read the file, the `w`
 indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `-`, indicating that you
-don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored, we'll
-talk more about this in [a later lesson](http://www.datacarpentry.org/shell-genomics/05-writing-scripts/)).
+don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored.
 
-Our goal for now is to change permissions on one of our files so that you no longer have `w` or write permissions. We can do this using the `chmod` (change mode) command and subtracting (`-`) the write permission `-w`.
-
-~~~
-$ chmod -w SRR098026-backup.fastq
-$ ls -l
-~~~
-{: .bash}
-
-~~~
--rw-r--r-- 1 csuser csuser 47552 Nov  9 17:34 SRR097977-backup.fastq
--r--r--r-- 1 csuser csuser 43332 Nov  9 17:16 SRR098026-backup.fastq
-~~~
-{: .output}
-
-> ## Exercise
-> Now repeat what we just did for your other backup file.
->
->> ## Solution
->> ~~~
->> $ chmod -w SRR097977-backup.fastq
->> $ ls -l
->> ~~~
->> {: .bash}
->>
->> ~~~
->> -r--r--r-- 1 csuser csuser 47552 Nov  9 17:34 SRR097977-backup.fastq
->> -r--r--r-- 1 csuser csuser 43332 Nov  9 17:16 SRR098026-backup.fastq
->> ~~~
->> {: .output}
-> {: .solution}
-{: .challenge}
 
 ## Making the script into a program
 
@@ -338,60 +276,7 @@ only have one or the other installed by default.
 
 Let's say you want to download some data from Ensembl. We're going to download a very small
 tab-delimited file that just tells us what data is available on the Ensembl bacteria server.
-Before we can start our download, we need to know whether we're using ``curl`` or ``wget``.
-
-To see which program you have, type:
-
-~~~
-$ which curl
-$ which wget
-~~~
-{: .bash}
-
-``which`` is a BASH program that looks through everything you have
-installed, and tells you what folder it is installed to. If it can't
-find the program you asked for, it returns nothing, i.e. gives you no
-results.
-
-On Mac OSX, you'll likely get the following output:
-
-~~~
-$ which curl
-~~~
-{: .bash}
-
-~~~
-/usr/bin/curl
-~~~
-{: .output}
-
-~~~
-$ which wget
-~~~
-{: .bash}
-
-~~~
-$
-~~~
-{: .output}
-
-This output means that you have ``curl`` installed, but not ``wget``.
-
-Another possibility is that you will get an output which says
-`no wget in...` followed by a list of file paths where wget was not found. Either way, it should be obvious which of the two you have installed.
-
-If you run these commands in the Cloud-SPAN AMI you will find that both are installed so you can use either.
-
-Once you know whether you have ``curl`` or ``wget``, use one of the
-following commands to download the file:
-
-~~~
-$ cd
-$ wget ftp://ftp.ensemblgenomes.org/pub/release-37/bacteria/species_EnsemblBacteria.txt
-~~~
-{: .bash}
-
-or
+We can use ``curl`` to do this as follows.
 
 ~~~
 $ cd
@@ -399,12 +284,11 @@ $ curl -O ftp://ftp.ensemblgenomes.org/pub/release-37/bacteria/species_EnsemblBa
 ~~~
 {: .bash}
 
-Since we wanted to *download* the file rather than just view it, we used ``wget`` without
-any modifiers. With ``curl`` however, we had to use the -O flag, which simultaneously tells ``curl`` to
+Since we wanted to *download* the file rather than just view it, we used  ``curl`` with the -O flag, which simultaneously tells ``curl`` to
 download the page instead of showing it to us **and** specifies that it should save the
 file using the same name it had on the server: species_EnsemblBacteria.txt
 
-It's important to note that both ``curl`` and ``wget`` download to the computer that the
+It's important to note that ``curl``  downloads to the computer that the
 command line belongs to. So, if you are logged into AWS on the command line and execute
 the ``curl`` command above in the AWS terminal, the file will be downloaded to your AWS
 machine, not your local one.
