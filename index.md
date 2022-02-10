@@ -17,5 +17,5 @@ As you progress through this lesson, keep in mind that, even if you aren’t goi
 >
 > This lesson is part of a course that uses data hosted on an Amazon Machine Instance (AMI). Course participants will be given
 > information on how
-> to log-in to the AMI during the course. Information on preparing for the course is provided on the [Cloud-SPAN Genomics Course setup page](https://cloud-span.github.io/genomics01-intro/setup.html).
+> to log-in to the AMI during the course. Information on preparing for the course is provided on the [Cloud-SPAN Genomics Course setup page](https://cloud-span.github.io/01genomics/setup.html).
 {: .prereq}
