@@ -156,7 +156,7 @@ One thing we will commonly want to do with sequencing results is pull out bad re
 | `grep -v pattern filename`  | Identifies and prints sequences that do not match a given pattern  |
 | `grep -B1 -A2  pattern filename`  | Identifies and prints sequences that match a given pattern, plus one line before (`B1`) and two lines after (`A2`) |
 | `>`  | Redirect output of a function to a given file e.g. `grep pattern filename > newfile`|
-| `\|` | Pipes the output of one function into another  |
+| `|` | Pipes the output of one function into another  |
 | `wc` | Counts number of words, lines and characters in a file |
 
  We're going to look for reads with long sequences of N's like we did before, but now we're going to write a script, so we can run it each time we get new sequences, rather than type the code in by hand each time.
