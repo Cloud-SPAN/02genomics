@@ -51,7 +51,7 @@ The instance is exactly the same as the one used in our Prenomics course, so you
 
 When we log into the instance, we start in the `csuser` directory (the home directory).
 
-The files we will be using today and in future sessions are the `.fastq` files found under the relative path `~/shell_data/untrimmed_fastq`. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
+The files we will be using today and in future sessions are the `.fastq` files found under the relative path `~/shell_data/untrimmed_fastq`. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a [future lesson on this course](https://cloud-span.github.io/03genomics/01-quality-control/index.html).
 
 ## Writing files
 
@@ -144,6 +144,19 @@ Now you've written a file. You can take a look at it with `less` or `cat`, or op
 >
 {: .challenge}
 
+## FASTQ file format
+
+Before we start playing with our FASTQ files, we should remind ourselves of the FASTQ file format. We will learn about this in more detail in a [future lesson on this course](https://cloud-span.github.io/03genomics/01-quality-control/index.html). If you took the Prenomics course you should recall learning about this format previously.
+
+![A diagram showing that each read in a FASTQ file comprises 4 lines of information.](../fig\fasta_file_format.png){:width="600px"}
+
+In the FASTQ file format, each 'read' (i.e. sequence) is described in four lines of information.
+
+- The first line is the sample name (also called the label) and may contain other information such as the read length.
+- The second line is the sequence of bases itself
+- The third line is a separator line which always starts with a '+' and may repeat the information from line 1
+- The fourth line is a string of characters representing the quality scores for each base
+
 ## Writing scripts
 
 A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.
@@ -156,6 +169,7 @@ One thing we will commonly want to do with sequencing results is pull out bad re
 | `grep -v pattern filename`  | Identifies and prints sequences that do not match a given pattern  |
 | `grep -B1 -A2  pattern filename`  | Identifies and prints sequences that match a given pattern, plus one line before (`B1`) and two lines after (`A2`) |
 | `>`  | Redirect output of a function to a given file e.g. `grep pattern filename > newfile`|
+| `>>` | Redirect and append the output of a function to a give file (similar to `>` but does not overwrite the file contents) |
 | `|` | Pipes the output of one function into another  |
 | `wc` | Counts number of words, lines and characters in a file |
 
