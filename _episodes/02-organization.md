@@ -173,6 +173,12 @@ $ history | tail -n 7
 {: .bash}
 
 > ## Exercise
+> Make sure you are in the `csuser` directory.
+> ~~~
+> $ cd
+> ~~~
+> {: .bash}
+>
 > Using your knowledge of the shell, use the append redirect `>>` to create a file called
 > `cs_course_log_XXXX_XX_XX.sh` which contains your last 7 commands. (Use the four-digit year, two-digit month, and two digit day, e.g.
 > `cs_course_log_2021_10_27.sh`)  
@@ -220,7 +226,7 @@ text on a line after a `#` is ignored by bash when evaluating the text as code. 
 
 ~~~
 # 2021_10_27   
-# Created sample directories for the Data Carpentry workshop  
+# Created sample directories for Cloud-SPAN workshop  
 ~~~
 {: .bash}
 
@@ -232,7 +238,7 @@ Your file should look something like this:
 
 ~~~
 # 2021_10_27
-# Created sample directories for the Data Carpentry workshop
+# Created sample directories for Cloud-SPAN workshop
 
 mkdir cs_course
 mkdir cs_course/docs
@@ -275,9 +281,7 @@ It's important that we keep our workshop log file outside of our `cs_course` dir
 if we want to use it to recreate our work. It's also important for us to keep it up to
 date by regularly updating with the commands that we used to generate our results files.
 
-Congratulations! You've finished your introduction to using the shell for genomics
-projects. You now know how to navigate your file system, create, copy, move,
-and remove files and directories, and automate repetitive tasks using scripts and
+Congratulations! You've finished your introduction to writing scripts for genomics projects. You now know how to automate repetitive tasks using scripts and
 wildcards. With this solid foundation, you're ready to move on to apply all of these new
 skills to carrying out more sophisticated bioinformatics
 analysis work. Don't worry if everything doesn't feel perfectly comfortable yet. We're
