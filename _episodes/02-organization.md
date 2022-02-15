@@ -44,7 +44,7 @@ Good documentation is key to avoiding this issue, and luckily enough,
 recording your computational experiments is even easier than recording lab data. Copy/Paste will become
 your best friend, sensible file names will make your analysis understandable by you and your collaborators, and
 writing the methods section for your next paper will be easy! Remember that in any given project of yours, it's worthwhile to consider
-a future version of yourself as an entirely separate collaborator. The better your documenation is, the more this 'collaborator' will
+a future version of yourself as an entirely separate collaborator. The better your documentation is, the more this 'collaborator' will
 feel indebted to you!
 
 With this in mind, let's have a look at the best practices for
@@ -114,7 +114,10 @@ cs_course/results:
 ~~~
 {: .output}
 
-# organising your files
+If we were to draw this new file structure as a hierarchy tree, here's what it would look like:
+![](../fig/genomics02-ep2-organising-files.png){:width="400px"}
+
+# Organising your files
 
 Before beginning any analysis, it's important to save a copy of your
 raw data. The raw data should never be changed. Regardless of how
@@ -126,7 +129,7 @@ your data that you never modify guarantees that you will always be
 able to start over if something goes wrong with your analysis. When
 starting any analysis, you can make a copy of your raw data file and
 do your manipulations on that file, rather than the raw version. We
-learned in [a previous episode](https://cloud-span.github.io/genomics04-data-preparation-organisation/01-writing-scripts/index.html) how to prevent overwriting our raw data
+learned in [a previous episode](https://cloud-span.github.io/02genomics/01-writing-scripts/index.html) how to prevent overwriting our raw data
 files by setting restrictive file permissions.
 
 You can store any results that are generated from your analysis in
