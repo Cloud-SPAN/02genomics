@@ -34,12 +34,30 @@ function change_content_by_platform(form_control){
 window.onload = set_page_view_defaults;
 </script>
 
+## Welcome to the Cloud-SPAN AWS instance!
+
+In the first session we logged onto the Cloud for the first time. Today (and in subsequent sessions) we will be exploring this instance further and examining some of the data it holds.
+
+As a reminder, we log in by launching Git Bash or Terminal from the `cloudspan` folder we made in today's first episode, and then using our `ssh` command. Take a look at the [full set of instructions](https://cloud-span.github.io/01genomics/05-logging-onto-cloud/index.html) if you have forgotten how to do any of this.
+
+~~~
+$ ssh -i login-key-instanceNN.pem  csuser@instanceNN-gc.cloud-span.aws.york.ac.uk
+~~~
+{: .bash}
+
+The instance is exactly the same as the one used in our Prenomics course, so you may have explored it already. The file structure looks like this:
+
+![A file hierarchy tree](../fig/blank_instance_file_tree.png){:width="400px"}
+
+When we log into the instance, we start in the `csuser` directory (the home directory).
+
+The files we will be using today and in future sessions are the `.fastq` files found under the relative path `~/shell_data/untrimmed_fastq`. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
 
 ## Writing files
 
-We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
+In the Prenomics course we worked a lot with files that already existed, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
 
-To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/shell_data/untrimmed_fastq`.
+To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about the data files in `~/shell_data/untrimmed_fastq`.
 
 This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
 
@@ -82,8 +100,7 @@ The text at the bottom of the screen shows the keyboard shortcuts for performing
 > another directory the first time you "Save As..."
 {: .callout}
 
-Let's type in a few lines of text. Describe what the files in this
-directory are or what you've been doing with them.
+Let's type in a couple of lines of text with the date and the types of file we are working with (FASTQ). We can add more to this document later.
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>-<kbd>O</kbd> (press the <kbd>Ctrl</kbd> or <kbd>Control</kbd> key and, while
 holding it down, press the <kbd>O</kbd> key) to write our data to disk. You'll be asked what file we want to save this to:
 press <kbd>Return</kbd> to accept the suggested default of `README.txt`.
@@ -116,12 +133,12 @@ Now you've written a file. You can take a look at it with `less` or `cat`, or op
 
 > ## Exercise
 >
-> Open `README.txt` and add the date to the top of the file and save the file.
+> Open `README.txt`, add your name and institution to the top of the file, and save the file.
 >
 > > ## Solution
 > >
 > > Use `nano README.txt` to open the file.
-> > Add today's date and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by `y` and <kbd>Enter</kbd> to save.
+> > Add your name and institution and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by `y` and <kbd>Enter</kbd> to save.
 > >
 > {: .solution}
 >
@@ -131,7 +148,18 @@ Now you've written a file. You can take a look at it with `less` or `cat`, or op
 
 A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.
 
-One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what's going on with them. We're going to look for reads with long sequences of N's like we did before, but now we're going to write a script, so we can run it each time we get new sequences, rather than type the code in by hand each time.
+One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what's going on with them. We did this [on day two of the Prenomics course](https://cloud-span.github.io/prenomics02-command-line/03-redirection/index.html) using the `grep` command. Here is a reminder of the different commands we used to do this:
+
+| Command  | Use |
+| ------------- | ------------- |
+| `grep pattern filename`  | Identifies and prints sequences that match a given pattern within a file  |
+| `grep -v pattern filename`  | Identifies and prints sequences that do not match a given pattern  |
+| `grep -B1 -A2  pattern filename`  | Identifies and prints sequences that match a given pattern, plus one line before (`B1`) and two lines after (`A2`) |
+| `>`  | Redirect output of a function to a given file e.g. `grep pattern filename > newfile`|
+| `\|` | Pipes the output of one function into another  |
+| `wc` | Counts number of words, lines and characters in a file |
+
+ We're going to look for reads with long sequences of N's like we did before, but now we're going to write a script, so we can run it each time we get new sequences, rather than type the code in by hand each time.
 
 We're going to create a new file to put this command in. We'll call it `bad-reads-script.sh`. The `sh` isn't required, but using that extension tells us that it's a shell script.
 
@@ -149,7 +177,7 @@ grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' > scripted_bad_reads.txt
 
 > ## Custom `grep` control
 >
-> We introduced the `-v` option in [the previous episode](https://cloud-span.github.io/genomics03-using-the-command-line/03-redirection/index.html), now we
+> We introduced the `-v` option in [Prenomics](https://cloud-span.github.io/prenomics02-command-line/03-redirection/index.html), now we
 > are using `-h` to "Suppress the prefixing of file names on output" according to the documentation shown by `man grep`.
 >
 {: .callout}
