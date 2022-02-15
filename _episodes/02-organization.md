@@ -115,7 +115,7 @@ cs_course/results:
 {: .output}
 
 If we were to draw this new file structure as a hierarchy tree, here's what it would look like:
-![](../fig/genomics02-ep2-organising-files.png){:width="400px"}
+![](../fig/genomics02-ep2-organising-files-with-minis.png){:width="400px"}
 
 # Organising your files
 
