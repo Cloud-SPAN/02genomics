@@ -13,7 +13,8 @@ As you progress through this lesson, keep in mind that, even if you aren’t goi
 > This lesson assumes no prior experience with the tools covered in the course.
 > However, learners are expected to have some familiarity with biological concepts,
 > including the concept of genomic variation within a population, 
-as well as some basic experience using a command line interface to navigate file systems.
+as well as some basic experience using a command line interface to navigate file systems.  
+>
 > For a beginner-level overview of the command line, see the Cloud-SPAN Prenomics course pages.
 > If you are unsure whether your skills/experience are sufficient, why not try our [self-assessment quiz](https://shiny.york.ac.uk/er13/prenomics-quiz/#section-why) to test your knowledge?
 >
