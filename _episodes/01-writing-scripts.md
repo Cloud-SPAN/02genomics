@@ -189,6 +189,12 @@ grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt
 ~~~
 {: .bash}
 
+> ## Custom `grep` control
+>
+> We are using `-h` to "Suppress the prefixing of file names on output" according to the documentation shown by `man grep`.
+>
+{: .callout}
+
 Type your `grep` command into the file and save it as before. Be careful that you did not add the `$` at the beginning of the line.
 
 Now comes the neat part. We can run this script. Type:
@@ -235,11 +241,11 @@ characters relate to the permissions that the file owner has, the next three rel
 three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
 that deal with your permissions (as the file owner).
 
-![Permissions breakdown](../fig/rwx_figure.svg)
+![Permissions breakdown](../fig/rwx_figure.svg){:width=600px}
 
 Here the three positions that relate to the file owner are `rw-`. The `r` means that you have permission to read the file, the `w`
 indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `-`, indicating that you
-don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored.
+don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored).
 
 
 ## Making the script into a program
@@ -286,8 +292,6 @@ $ ./bad-reads-script.sh
 {: .bash}
 
 The script should run the same way as before, but now we've created our very own computer program!
-
-You will learn more about writing scripts in [a later lesson](https://cloud-span.github.io/genomics05-data-processing-analysis/03-automation/index.html).
 
 ## Moving and Downloading Data
 
@@ -343,7 +347,7 @@ using a transfer program, it needs to be installed on your local machine, not yo
 ### Using scp for file transfer
 
 `scp` stands for 'secure copy protocol', and is a widely used UNIX tool for moving files
-between computers. This is ran in your **local terminal**. You will need to be within your cloudspan folder you created previously whether you are using Git Bash or terminal. 
+between computers. This is run in your **local terminal**. You will need to be within your cloudspan folder you created previously whether you are using Git Bash or terminal. 
 
 If you are using a Windows machine, you should be able to use scp as long as you have Git Bash/Git for Windows installed.
 Just make sure you run the commands below in a Git Bash terminal and not the built-in Windows terminal.
