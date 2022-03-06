@@ -15,10 +15,10 @@ As you progress through this lesson, keep in mind that, even if you aren’t goi
 > including the concept of genomic variation within a population, 
 as well as some basic experience using a command line interface to navigate file systems.  
 >
-> For a beginner-level overview of the command line, see the [Cloud-SPAN Prenomics course pages](https://cloud-span.github.io/prenomics00-intro/).
+> For a beginner-level overview of the command line, see the [Cloud-SPAN Prenomics pages](https://cloud-span.github.io/prenomics00-intro/).
 > If you are unsure whether your skills/experience are sufficient, why not try our [self-assessment quiz](https://shiny.york.ac.uk/er13/prenomics-quiz/#section-why) to test your knowledge?
 >
 > This lesson is part of a course that uses data hosted on an Amazon Machine Instance (AMI). Course participants will be given
 > information on how
-> to log-in to the AMI during the course. Information on preparing for the course is provided on the [Cloud-SPAN Genomics Course setup page](https://cloud-span.github.io/01genomics/setup.html).
+> to log-in to the AMI during the course. Information on preparing for the course is provided on the [Cloud-SPAN Genomics setup page](https://cloud-span.github.io/01genomics/setup.html).
 {: .prereq}
