@@ -38,10 +38,10 @@ window.onload = set_page_view_defaults;
 
 In the first session we logged onto the Cloud for the first time. Today (and in subsequent sessions) we will be exploring this instance further and examining some of the data it holds.
 
-As a reminder, we log in by launching Git Bash or Terminal from the `cloudspan` folder we made in today's first episode, and then using our `ssh` command. Take a look at the [full set of instructions](https://cloud-span.github.io/01genomics/05-logging-onto-cloud/index.html) if you have forgotten how to do any of this.
+As a reminder, we log in by launching Git Bash or Terminal from the `cloudspan` folder we made, and then using our `ssh` command. Take a look at the [full set of instructions](https://cloud-span.github.io/01genomics/05-logging-onto-cloud/index.html) if you have forgotten how to do any of this.
 
 ~~~
-$ ssh -i login-key-instanceNN.pem  csuser@instanceNN-gc.cloud-span.aws.york.ac.uk
+$ ssh -i login-key-instanceNNN.pem  csuser@instanceNNN.cloud-span.aws.york.ac.uk
 ~~~
 {: .bash}
 
@@ -51,21 +51,21 @@ The instance is exactly the same as the one used in our Prenomics course, so you
 
 When we log into the instance, we start in the `csuser` directory (the home directory).
 
-The files we will be using today and in future sessions are the `.fastq` files found under the relative path `~/shell_data/untrimmed_fastq`. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a [future lesson on this course](https://cloud-span.github.io/03genomics/01-quality-control/index.html).
+The files we will be using today and in future sessions are the `.fastq` files found in  `shell_data/untrimmed_fastq`. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a [future lesson on this course](https://cloud-span.github.io/03genomics/01-quality-control/index.html).
 
 ## Writing files
 
 In the Prenomics course we worked a lot with files that already existed, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
 
-To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about the data files in `~/shell_data/untrimmed_fastq`.
+To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about the data files in `shell_data/untrimmed_fastq`.
 
 This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
 
-Let's change our working directory to `~/shell_data/untrimmed_fastq` using `cd`,
+Let's change our working directory to `shell_data/untrimmed_fastq` using `cd`,
 then run `nano` to create a file called `README.txt`:
 
 ~~~
-$ cd ~/shell_data/untrimmed_fastq
+$ cd shell_data/untrimmed_fastq
 $ nano README.txt
 ~~~
 {: .bash}
@@ -76,37 +76,24 @@ You should see something like this:
 
 The text at the bottom of the screen shows the keyboard shortcuts for performing various tasks in `nano`. We will talk more about how to interpret this information soon.
 
-> ## Which Editor?
+> ## Text editors
 >
-> When we say, "`nano` is a text editor," we really do mean "text": it can
-> only work with plain character data, not tables, images, or any other
-> human-friendly media. We use it in examples because it is one of the
-> least complex text editors. However, because of this trait, it may
-> not be powerful enough or flexible enough for the work you need to do
-> after this workshop. On Unix systems (such as Linux and Mac OS X),
+> Text editors," like nano, "notepad" on Windows or "TextEdit" on Mac are used to edit any [plain text files](https://www.howtogeek.com/465420/what-is-plain-text/). Plain text files are those that contain only characters, not images or formatting.  
+> 
+> We are using nano because it is one of the least complex Unix text editors. However,
 > many programmers use [Emacs](http://www.gnu.org/software/emacs/) or
 > [Vim](http://www.vim.org/) (both of which require more time to learn),
-> or a graphical editor such as
-> [Gedit](http://projects.gnome.org/gedit/). On Windows, you may wish to
-> use [Notepad++](http://notepad-plus-plus.org/).  Windows also has a built-in
-> editor called `notepad` that can be run from the command line in the same
-> way as `nano` for the purposes of this lesson.
+> or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). 
 >
 > No matter what editor you use, you will need to know where it searches
 > for and saves files. If you start it from the shell, it will (probably)
-> use your current working directory as its default location. If you use
-> your computer's start menu, it may want to save files in your desktop or
-> documents directory instead. You can change this by navigating to
-> another directory the first time you "Save As..."
+> use your current working directory as its default location. 
 {: .callout}
 
-Let's type in a couple of lines of text with the date and the types of file we are working with (FASTQ). We can add more to this document later.
-Once we're happy with our text, we can press <kbd>Ctrl</kbd>-<kbd>O</kbd> (press the <kbd>Ctrl</kbd> or <kbd>Control</kbd> key and, while
-holding it down, press the <kbd>O</kbd> key) to write our data to disk. You'll be asked what file we want to save this to:
-press <kbd>Return</kbd> to accept the suggested default of `README.txt`.
+Add a couple of lines of text to the README.txt with the date and the types of file we are working with (FASTQ). We can add more to this document later.
+Once you're happy with the text, use <kbd>Ctrl</kbd>-<kbd>O</kbd> and then <kbd>Return</kbd> to accept the suggested default of `README.txt`.
 
-Once our file is saved, we can use <kbd>Ctrl</kbd>-<kbd>X</kbd> to quit the editor and
-return to the shell.
+Now use <kbd>Ctrl</kbd>-<kbd>X</kbd> to quit the editor and return to the shell.
 
 > ## Control, Ctrl, or ^ Key
 >
@@ -159,7 +146,7 @@ In the FASTQ file format, each 'read' (i.e. sequence) is described in four lines
 
 ## Writing scripts
 
-A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.
+A really powerful thing about the command line is that you can write scripts. A script contains a list of commands that you want to run. They are useful because it means you have a record of the commands you want and they can be run repeatedly.  Though writing scripts may require an additional time investment initially, they make your work reproducible and efficient. 
 
 One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what's going on with them. We did this [on day two of the Prenomics course](https://cloud-span.github.io/prenomics02-command-line/03-redirection/index.html) using the `grep` command. Here is a reminder of the different commands we used to do this:
 
@@ -184,10 +171,14 @@ $ nano bad-reads-script.sh
 
 Bad reads have a lot of N's, so we're going to look for  `NNNNNNNNNN` with `grep`. We want the whole FASTQ record, so we're also going to get the one line above the sequence and the two lines below. We also want to look in all the files that end with `.fastq`, so we're going to use the `*` wildcard.
 
+Add this to your script:
+
 ~~~
-grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt
+grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt 
 ~~~
 {: .bash}
+
+This will search through all the files ending `.fastg` and write the reads containing `NNNNNNNNNN` to a file, `scripted_bad_reads.txt` 
 
 > ## Custom `grep` control
 >
@@ -195,9 +186,9 @@ grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt
 >
 {: .callout}
 
-Type your `grep` command into the file and save it as before. Be careful that you did not add the `$` at the beginning of the line.
+Save `bad-reads-script.sh` and exit nano.
 
-Now comes the neat part. We can run this script. Type:
+Now comes the neat part. We can run this script with:
 
 ~~~
 $ bash bad-reads-script.sh
@@ -210,7 +201,7 @@ It will look like nothing happened, but now if you look at `scripted_bad_reads.t
 > ## Exercise
 >
 > We want the script to tell us when it's done.
-> 1. Open `bad-reads-script.sh` and add the line `echo "Script finished!"` after the `grep` command and save the file.
+> 1. Open `bad-reads-script.sh` and add the line `echo "Script finished!"` after the `grep` command.  Save `bad-reads-script.sh` and exit nano.
 > 2. Run the updated script.
 >
 > > ## Solution
@@ -252,10 +243,9 @@ don't have permission to carry out the ability encoded by that space (this is th
 
 We had to type `bash` because we needed to tell the computer what program to use to run this script. Instead, we can turn this script into its own program. We need to tell it that it's a program by making it executable. We can do this by changing the file permissions. We are going to use the `bad-read-scripts.sh` file we generated earlier in the episode.
 
-First, let's move back to our `~/shell_data/untrimmed_fastq` working directory using `cd` and look at the current permissions for `bad-read-scripts.sh` .
+Look at the current permissions for `bad-read-scripts.sh` .
 
 ~~~
-$ cd ../
 $ ls -l bad-reads-script.sh
 ~~~
 {: .bash}
@@ -265,7 +255,7 @@ $ ls -l bad-reads-script.sh
 ~~~
 {: .output}
 
-We see that it says `-rw-r--r--`. This shows that the file can be read by any user and written to by the file owner (you). We want to change these permissions so that the file can be executed as a program. We use the command `chmod` like we did earlier when we removed write permissions. Here we are adding (`+`) executable permissions (`+x`).
+We see that it says `-rw-r--r--`. This shows that the file can be read by any user and written to by the file owner (you). We want to change these permissions so that the file can be executed as a program. We use the command `chmod`. Here we are adding (`+`) executable permissions (`x`).
 
 ~~~
 $ chmod +x bad-reads-script.sh
@@ -299,7 +289,7 @@ So far, we've worked with data that is pre-loaded on the instance in the cloud. 
 most analyses begin with moving data onto the instance. Below we'll show you some commands to
 download data onto your instance, or to move data between your computer and the cloud.
 
-### Getting data from the cloud
+### Getting data from the web to your instance
 
 There are two programs that will download data from a remote server to your local
 (or remote) machine: ``wget`` and ``curl``. They were designed to do slightly different
@@ -312,12 +302,8 @@ the same behaviour, but they are mostly interchangeable.
  - ``cURL`` is a pun, it is supposed to be read as "see URL", so its basic function is
  to *display* webpages or data at a web address.
 
-Which one you need to use mostly depends on your operating system, as most computers will
-only have one or the other installed by default.
-
-Let's say you want to download some data from Ensembl. We're going to download a very small
+We are going to use `curl` to download some data from Ensembl. So this doesn't take too long, the file we're going to download is a very small
 tab-delimited file that just tells us what data is available on the Ensembl bacteria server.
-We can use ``curl`` to do this as follows.
 
 ~~~
 $ cd
@@ -325,13 +311,11 @@ $ curl -O ftp://ftp.ensemblgenomes.org/pub/release-37/bacteria/species_EnsemblBa
 ~~~
 {: .bash}
 
-Since we wanted to *download* the file rather than just view it, we used  ``curl`` with the -O flag, which simultaneously tells ``curl`` to
-download the page instead of showing it to us **and** specifies that it should save the
-file using the same name it had on the server: species_EnsemblBacteria.txt
+The `-O` flag tells `curl` to save the file, using the same name, rather than just showing it to us.
 
-It's important to note that ``curl``  downloads to the computer that the
-command line belongs to. So, if you are logged into AWS on the command line and execute
-the ``curl`` command above in the AWS terminal, the file will be downloaded to your AWS
+It's important to note that `curl`  downloads to the *computer that the
+command line belongs to*. So, if you are logged into AWS on the command line and execute
+the `curl` command above in the AWS terminal, the file will be downloaded to your AWS
 machine, not your local one.
 
 ### Moving files between your laptop and your instance
@@ -347,68 +331,73 @@ using a transfer program, it needs to be installed on your local machine, not yo
 ### Using scp for file transfer
 
 `scp` stands for 'secure copy protocol', and is a widely used UNIX tool for moving files
-between computers. This is run in your **local terminal**. You will need to be within your cloudspan folder you created previously whether you are using Git Bash or terminal. 
+between computers. This is run in your **local terminal**. 
 
-If you are using a Windows machine, you should be able to use scp as long as you have Git Bash/Git for Windows installed.
-Just make sure you run the commands below in a Git Bash terminal and not the built-in Windows terminal.
+The `scp` command takes this form:
 
 ~~~
 scp <file I want to move> <where I want to move it>
 ~~~
 {: .bash}
 
-Note that you always run `scp` locally, but that *doesn't* mean that
-you can only move files from your local computer. In order to move a file from your local computer to an AWS instance, the command would look like this:
+Note that you always run `scp` locally, but you can still move files in either direction.
+
+To move a file from your local computer to your AWS instance, the command would look like this:
 
 ~~~
 $ scp <local file> <AWS instance>
 ~~~
 {: .bash}
 
-To move it back to your local computer, you re-order the `to` and `from` fields:
+To move a file from your AWS instance to your local computer, you re-order the `to` and `from` fields:
 
 ~~~
 $ scp <AWS instance> <local file>
 ~~~
 {: .bash}
 
-To keep your instance secure, you also need a way to tell it that you are authorised to have access. You do this using the login key file you downloaded on the first day of the course. It will have the name `login-key-instanceNN.pem`, where `NN` is replaced by your instance's unique number.
+You also need to tell `scp` that you are authorised to have access to your AWS instance. This is done using the same `login-key-instanceNNN.pem` login key you use to log into the instance.
 
-You tell the instance to look for your login key using the flag `-i`.
+You tell `scp` to look for your login key using the flag `-i`.
 
 > ## What is your AWS instance called?
 > The address you should use for your AWS instance has two main parts: your login credentials and your file path.
-> - the first part has the format `csuser@instanceNN-gc.cloud-span.aws.york.ac.uk` where `NN` is replaced by your instance's unique number.
+> - the first part has the format `csuser@instanceNNN.cloud-span.aws.york.ac.uk` where `NNN` is replaced by your instance's unique number.
 > - the second part is the file path where you want to send/download your file, for example `/home/csuser/`.
 > - the two parts are separated by a colon with **no** spaces.
 {: .callout}
 
 ### Uploading Data to your Virtual Machine with scp
 
-Open a new terminal/GitBash window and use the `scp` command to upload a file (e.g. local_file.txt) to the csuser home directory **(make sure you substitute `instanceNN` with your instance's number)**:
+Make a text file called `test.txt` in your `cloudspan` folder on your local machine. It doesn't matter what is in it - we just want a file to work with.
+
+Launch another Git Bash or Terminal from the `cloudspan` folder. You will now have two terminals, one logged on to your instance and one, the **local terminal** not.
+Now use `scp` to upload `test.txt` to the `csuser` home directory **(make sure you substitute `instanceNNN` with your instance's number)**. Type the following into the local terminal:
 
 ~~~
-$  scp -i login-key-instanceNN.pem test.txt csuser@instanceNN-gc.cloud-span.aws.york.ac.uk:/home/csuser/
+$  scp -i login-key-instanceNNN.pem test.txt csuser@instanceNNN.cloud-span.aws.york.ac.uk:/home/csuser/
 ~~~
 {: .bash}
 
-If you were using `instance01` and copying the file `test.txt` the command would look like this. Note this presumes that the file `test.txt` **and** the login key file are in the directory you are currently in. You also need to use scp in a window that is not logged onto the instance:
+If you were using `instance001` and copying the file `test.txt` the command would look like this.  
 
 ~~~
 $  scp -i login-key-instance01.pem test.txt csuser@instance01-gc.cloud-span.aws.york.ac.uk:/home/csuser/
 ~~~
 
-**Tip:** you should be running this command while in the same folder as the file you want to send (`local_file.txt`). If you aren't, then you need to specify the path in your command. The same goes for your login key file.
+Note this assumes that `test.txt` **and** the login key file are in your working directory - i.e., the directory you launched Git Bash or Terminal from. You can check your working directory with `pwd`.
 
-### Downloading Data from your Virtual Machine with scp
+**Tip:** If  `test.txt` or your login key file, or both, are not in your working directory then you will need to give the relative paths to them.
 
-Let's download a text file from our remote machine. You should have a file that contains bad reads called `~/shell_data/scripted_bad_reads.txt`.
+### Downloading from your AWS instance with scp
 
-Download the bad reads file in ~/shell_data/scripted_bad_reads.txt to your home ~/Downloads directory using the following command **(make sure you substitute `instanceNN` with your instance's number)**:
+We will transfer the file containing the bad reads from your AWS instance to your local machine. That file is in  `shell_data/scripted_bad_reads.txt` on your instance.
+
+Now use `scp` to transfer `shell_data/scripted_bad_reads.txt` to the `cloudspan` directory **(make sure you substitute `instanceNNN` with your instance's number)**. Type the following into the local terminal:
 
 ~~~
-$ scp -i login-key-instanceNN.pem test.txt csuser@instanceNN-gc.cloud-span.aws.york.ac.uk:/home/csuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt ~/Downloads
+$ scp -i login-key-instanceNNN.pem test.txt csuser@instanceNNN.cloud-span.aws.york.ac.uk:/home/csuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt .
 ~~~
 {: .bash}
 
-Remember that in both instances, the command is run from your local machine, we've just flipped the order of the to and from parts of the command.
+**Note** Don't miss out the `.` at the end! We wanted to download the file to our `cloudspan` directory and the `cloudspan` directory is our working directory therefore we use `.` meaning "to *this* directory"
