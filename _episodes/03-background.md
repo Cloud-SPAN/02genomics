@@ -47,7 +47,7 @@ We will be working with three sample events from the **Ara-3** strain of this ex
 
 The population changed substantially during the course of the experiment, and we will be exploring how (the evolution of a **Cit+** mutant and **hypermutability**) with our variant calling workflow. 
 
-The metadata file associated with this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/wrangling-genomics/gh-pages/files/Ecoli_metadata_composite.csv) or [viewed in Github](https://github.com/datacarpentry/wrangling-genomics/blob/gh-pages/files/Ecoli_metadata_composite.csv). If you would like to know details of how the file was created, you can look at [some notes and sources here](https://github.com/datacarpentry/wrangling-genomics/blob/gh-pages/files/Ecoli_metadata_composite_README.md).
+The metadata file associated with this lesson can be [downloaded directly here](https://github.com/Cloud-SPAN/04genomics/tree/gh-pages/files/Ecoli_metadata_composite.csv) or [viewed in Github](https://github.com/Cloud-SPAN/04genomics/tree/gh-pages/files/Ecoli_metadata_composite.csv). If you would like to know details of how the file was created, you can look at [some notes and sources here](https://github.com/Cloud-SPAN/04genomics/tree/gh-pages/files/Ecoli_metadata_composite_README.md).
 
 
 
