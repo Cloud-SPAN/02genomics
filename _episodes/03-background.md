@@ -71,7 +71,7 @@ This metadata describes information on the *Ara-3* clones and the columns repres
 
 > ## Challenge
 >
-> Based on the metadata, can you answer the following questions? Share your answers in the Padlet.
+> Based on the metadata, can you answer the following questions? Share your answers on the [forum](https://cloudspan.peerboard.com/post/70532081).
 >
 > 1. How many different generations exist in the data?
 > 2. How many rows and how many columns are in this data?
