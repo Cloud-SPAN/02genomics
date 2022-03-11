@@ -79,15 +79,15 @@ The text at the bottom of the screen shows the keyboard shortcuts for performing
 > ## Text editors
 >
 > Text editors," like nano, "notepad" on Windows or "TextEdit" on Mac are used to edit any [plain text files](https://www.howtogeek.com/465420/what-is-plain-text/). Plain text files are those that contain only characters, not images or formatting.  
-> 
+>
 > We are using nano because it is one of the least complex Unix text editors. However,
 > many programmers use [Emacs](http://www.gnu.org/software/emacs/) or
 > [Vim](http://www.vim.org/) (both of which require more time to learn),
-> or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/). 
+> or a graphical editor such as [Gedit](http://projects.gnome.org/gedit/).
 >
 > No matter what editor you use, you will need to know where it searches
 > for and saves files. If you start it from the shell, it will (probably)
-> use your current working directory as its default location. 
+> use your current working directory as its default location.
 {: .callout}
 
 Add a couple of lines of text to the README.txt with the date and the types of file we are working with (FASTQ). We can add more to this document later.
@@ -146,7 +146,7 @@ In the FASTQ file format, each 'read' (i.e. sequence) is described in four lines
 
 ## Writing scripts
 
-A really powerful thing about the command line is that you can write scripts. A script contains a list of commands that you want to run. They are useful because it means you have a record of the commands you want and they can be run repeatedly.  Though writing scripts may require an additional time investment initially, they make your work reproducible and efficient. 
+A really powerful thing about the command line is that you can write scripts. A script contains a list of commands that you want to run. They are useful because it means you have a record of the commands you want and they can be run repeatedly.  Though writing scripts may require an additional time investment initially, they make your work reproducible and efficient.
 
 One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what's going on with them. We did this [on day two of the Prenomics course](https://cloud-span.github.io/prenomics02-command-line/03-redirection/index.html) using the `grep` command. Here is a reminder of the different commands we used to do this:
 
@@ -174,11 +174,11 @@ Bad reads have a lot of N's, so we're going to look for  `NNNNNNNNNN` with `grep
 Add this to your script:
 
 ~~~
-grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt 
+grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt
 ~~~
 {: .bash}
 
-This will search through all the files ending `.fastg` and write the reads containing `NNNNNNNNNN` to a file, `scripted_bad_reads.txt` 
+This will search through all the files ending `.fastg` and write the reads containing `NNNNNNNNNN` to a file, `scripted_bad_reads.txt`
 
 > ## Custom `grep` control
 >
@@ -331,7 +331,7 @@ using a transfer program, it needs to be installed on your local machine, not yo
 ### Using scp for file transfer
 
 `scp` stands for 'secure copy protocol', and is a widely used UNIX tool for moving files
-between computers. This is run in your **local terminal**. 
+between computers. This is run in your **local terminal**.
 
 The `scp` command takes this form:
 
@@ -382,7 +382,7 @@ $  scp -i login-key-instanceNNN.pem test.txt csuser@instanceNNN.cloud-span.aws.y
 If you were using `instance001` and copying the file `test.txt` the command would look like this.  
 
 ~~~
-$  scp -i login-key-instance01.pem test.txt csuser@instance01-gc.cloud-span.aws.york.ac.uk:/home/csuser/
+$  scp -i login-key-instance001.pem test.txt csuser@instance001.cloud-span.aws.york.ac.uk:/home/csuser/
 ~~~
 
 Note this assumes that `test.txt` **and** the login key file are in your working directory - i.e., the directory you launched Git Bash or Terminal from. You can check your working directory with `pwd`.
@@ -396,7 +396,7 @@ We will transfer the file containing the bad reads from your AWS instance to you
 Now use `scp` to transfer `shell_data/scripted_bad_reads.txt` to the `cloudspan` directory **(make sure you substitute `instanceNNN` with your instance's number)**. Type the following into the local terminal:
 
 ~~~
-$ scp -i login-key-instanceNNN.pem test.txt csuser@instanceNNN.cloud-span.aws.york.ac.uk:/home/csuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt .
+$ scp -i login-key-instanceNNN.pem csuser@instanceNNN.cloud-span.aws.york.ac.uk:/home/csuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt .
 ~~~
 {: .bash}
 
