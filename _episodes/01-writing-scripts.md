@@ -179,7 +179,7 @@ grep -B1 -A2 -h NNNNNNNNNN *.fastq > scripted_bad_reads.txt
 ~~~
 {: .bash}
 
-This will search through all the files ending `.fastg` and write the reads containing `NNNNNNNNNN` to a file, `scripted_bad_reads.txt`
+This will search through all the files ending `.fastq` and write the reads containing `NNNNNNNNNN` to a file, `scripted_bad_reads.txt`
 
 > ## Custom `grep` control
 >
