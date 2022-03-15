@@ -113,7 +113,8 @@ Now use <kbd>Ctrl</kbd>-<kbd>X</kbd> to quit the editor and return to the shell.
 > This means that you can use <kbd>Ctrl</kbd>-<kbd>G</kbd> to get help and <kbd>Ctrl</kbd>-<kbd>O</kbd> to save your
 > file.
 >
-> If you are using a Mac, the `Ctrl` key is replaced by the `Command` key, which is labelled with a  ` ⌘ `.
+> If you are using a Mac, you might be more familiar with the `Command` key, which is labelled with a  ` ⌘ `. 
+> But you will often use the the `Ctrl` key when working in a Terminal.
 {: .callout}
 
 Now you've written a file. You can take a look at it with `less` or `cat`, or open it up again and edit it with `nano`.
