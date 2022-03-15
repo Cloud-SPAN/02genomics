@@ -149,7 +149,7 @@ In the FASTQ file format, each 'read' (i.e. sequence) is described in four lines
 
 A really powerful thing about the command line is that you can write scripts. A script contains a list of commands that you want to run. They are useful because it means you have a record of the commands you want and they can be run repeatedly.  Though writing scripts may require an additional time investment initially, they make your work reproducible and efficient.
 
-One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what's going on with them. We did this [on day two of the Prenomics course](https://cloud-span.github.io/prenomics02-command-line/03-redirection/index.html) using the `grep` command. Here is a reminder of the different commands we used to do this:
+One thing we might want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what's going on with them. We did this [on day two of the Prenomics course](https://cloud-span.github.io/prenomics02-command-line/03-redirection/index.html) using the `grep` command. Here is a reminder of the different commands we used to do this:
 
 | Command  | Use |
 | ------------- | ------------- |
