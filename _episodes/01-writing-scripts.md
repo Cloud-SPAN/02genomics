@@ -113,7 +113,7 @@ Now use <kbd>Ctrl</kbd>-<kbd>X</kbd> to quit the editor and return to the shell.
 > This means that you can use <kbd>Ctrl</kbd>-<kbd>G</kbd> to get help and <kbd>Ctrl</kbd>-<kbd>O</kbd> to save your
 > file.
 >
-> If you are using a Mac, you might be more familiar with the `Command` key, which is labelled with a  ` ⌘ `. 
+> If you are using a Mac, you might be more familiar with the `Command` key, which is labelled with a <kbd>⌘</kbd> . 
 > But you will often use the the `Ctrl` key when working in a Terminal.
 {: .callout}
 
