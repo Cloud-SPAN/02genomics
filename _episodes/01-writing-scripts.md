@@ -206,11 +206,19 @@ It will look like nothing happened, but now if you look at `scripted_bad_reads.t
 > 2. Run the updated script.
 >
 > > ## Solution
-> >
-> >    ```
-> >   $ bash bad-reads-script.sh
-> >   Script finished!
-> >   ```
+> > 
+> > Use `nano bad-reads-script.sh` to open the file.
+> > Add `echo "Script finished!"` and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by `y` and <kbd>Enter</kbd> to save.
+> > 
+> > ~~~
+> >  $ bash bad-reads-script.sh
+> > ~~~
+> > {: .bash}
+> > 
+> > ~~~
+> > Script finished!
+> > ~~~
+> > {: .output}
 > >
 > {: .solution}
 {: .challenge}
