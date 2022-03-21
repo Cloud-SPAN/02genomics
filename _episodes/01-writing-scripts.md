@@ -392,9 +392,9 @@ Note this assumes that `test.txt` **and** the login key file are in your working
 
 ### Downloading from your AWS instance with scp
 
-We will transfer the file containing the bad reads from your AWS instance to your local machine. That file is in  `shell_data/scripted_bad_reads.txt` on your instance.
+We will transfer the file containing the bad reads from your AWS instance to your local machine. That file is in  `shell_data/untrimmed_fastq/scripted_bad_reads.txt` on your instance.
 
-Now use `scp` to transfer `shell_data/scripted_bad_reads.txt` to the `cloudspan` directory **(make sure you substitute `instanceNNN` with your instance's number)**. Type the following into the local terminal:
+Now use `scp` to transfer `shell_data/untrimmed_fastq/scripted_bad_reads.txt` to the `cloudspan` directory **(make sure you substitute `instanceNNN` with your instance's number)**. Type the following into the local terminal:
 
 ~~~
 $ scp -i login-key-instanceNNN.pem csuser@instanceNNN.cloud-span.aws.york.ac.uk:/home/csuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt .
