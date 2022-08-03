@@ -140,7 +140,7 @@ Before we start playing with our FASTQ files, we should remind ourselves of the 
 
 In the FASTQ file format, each 'read' (i.e. sequence) is described in four lines of information.
 
-- The first line is the sample name (also called the label) and may contain other information such as the read length.
+- The first line always starts with an '@' followed by the sequence identifier (also called the header or label) and may contain other information such as the read length.
 - The second line is the sequence of bases itself
 - The third line is a separator line which always starts with a '+' and may repeat the information from line 1
 - The fourth line is a string of characters representing the quality scores for each base
